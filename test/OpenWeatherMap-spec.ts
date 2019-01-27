@@ -30,6 +30,24 @@ test("Should throw an error if the Api key is undefined", t => {
   });
 });
 
+test("Should throw an error if the Api options are undefined", t => {
+  t.throws(() => {
+    new OpenWeatherMapApi(undefined);
+  });
+});
+
+test("Should set the default Api options successfully", t => {
+  const options: IOpenWeatherMapApiOptions = {
+    key: "xxx-xxx-xxx",
+  };
+
+  const api = new OpenWeatherMapApi(options);
+  
+  t.is(api.options.apiVersion, "2.5");
+  t.is(api.options.key, "xxx-xxx-xxx");
+  t.is(api.options.temperatureUnit, OpenWeatherMapApiUnits.Celsius);
+});
+
 test("Should set the Api options succesfully", t => {
   const options: IOpenWeatherMapApiOptions = {
     key: "xxx-xxx-xxx",

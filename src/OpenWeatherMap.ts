@@ -3,8 +3,6 @@
 import axios from "axios";
 import { URL, URLSearchParams } from "url";
 
-const BASE_URL = "https://api.openweathermap.org/";
-
 export enum OpenWeatherMapApiUnits {
   Fahrenheit = "imperial",
   Celsius = "metric"
@@ -21,14 +19,18 @@ export interface IByCityNameOptions {
   countryCode?: string;
 }
 
+const BASE_URL = "https://api.openweathermap.org/";
+const DEFAULT_API_VERSION = "2.5";
+const DEFAULT_UNIT = OpenWeatherMapApiUnits.Celsius;
+
 export class OpenWeatherMapApi {
   public options: IOpenWeatherMapApiOptions;
 
   constructor(
     options: IOpenWeatherMapApiOptions = {
-      apiVersion: "2.5",
+      apiVersion: DEFAULT_API_VERSION,
       key: "",
-      temperatureUnit: OpenWeatherMapApiUnits.Celsius
+      temperatureUnit: DEFAULT_UNIT
     }
   ) {
     if (!options.key.length) {
@@ -36,6 +38,8 @@ export class OpenWeatherMapApi {
     }
 
     this.options = options;
+    this.options.apiVersion = this.options.apiVersion || DEFAULT_API_VERSION;
+    this.options.temperatureUnit = this.options.temperatureUnit || DEFAULT_UNIT;
   }
 
   public async byCityName(queryOpts: IByCityNameOptions): Promise<any> {
