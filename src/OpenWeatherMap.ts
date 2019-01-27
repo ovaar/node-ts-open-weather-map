@@ -54,7 +54,7 @@ export class OpenWeatherMapApi {
 
       return data;
     } catch (error) {
-      throw new Error(`OpenWeatherMapApi: ${error.message}`);
+      throw error;
     }
   }
 

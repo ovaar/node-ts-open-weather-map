@@ -38,11 +38,11 @@ test("Should throw an error if the Api options are undefined", t => {
 
 test("Should set the default Api options successfully", t => {
   const options: IOpenWeatherMapApiOptions = {
-    key: "xxx-xxx-xxx",
+    key: "xxx-xxx-xxx"
   };
 
   const api = new OpenWeatherMapApi(options);
-  
+
   t.is(api.options.apiVersion, "2.5");
   t.is(api.options.key, "xxx-xxx-xxx");
   t.is(api.options.temperatureUnit, OpenWeatherMapApiUnits.Celsius);
@@ -110,6 +110,6 @@ test.serial("Should throw an error byCityName fails", async t => {
       countryCode: "nl",
       name: "Eindhoven"
     } as IByCityNameOptions),
-    { message: "OpenWeatherMapApi: http error" }
+    { message: "http error" }
   );
 });
