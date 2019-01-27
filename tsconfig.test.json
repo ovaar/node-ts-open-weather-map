@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "outDir": "lib_test",
+    "declaration": false,
+    "strict": true,
+    "removeComments": true,
+    "inlineSourceMap": true,
+    "resolveJsonModule": true,
+    "lib": [
+      "esnext"
+    ],
+  },
+  "include": [
+    "test/**/*"
+  ]
+}

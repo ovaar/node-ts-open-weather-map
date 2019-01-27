@@ -1,0 +1,57 @@
+{
+  "name": "node-ts-open-weather-map",
+  "version": "0.0.0",
+  "description": "Node.js typescript OpenWeatherMap api wrapper",
+  "license": "MIT",
+  "repository": "",
+  "author": "",
+  "keywords": [
+    ""
+  ],
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index",
+  "types": "lib/index",
+  "scripts": {
+    "clean": "rimraf lib && rimraf coverage && rimraf .nyc_output && rimraf lib_test",
+    "format": "prettier --write \"{src,test}/**/*.ts\"",
+    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
+    "prepublishOnly": "npm run build",
+    "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
+    "build": "tsc --pretty && tsc -p tsconfig.test.json --pretty",
+    "test": "npm run clean && tsc -p tsconfig.test.json --pretty && nyc --exclude \"**/*-spec.js\" ava \"**/*-spec.js\" --verbose",
+    "coverage": "nyc report --reporter=lcov --reporter=text --reporter=html",
+    "watch": "npm run build -- --watch",
+    "watch:test:ts": "tsc -p tsconfig.test.json --pretty --watch",
+    "watch:test:ava": "ava \"**/*-spec.js\" --verbose --watch",
+    "watch:test": "run-p watch:test:ts watch:test:ava"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.11.4",
+    "@types/sinon": "^7.0.5",
+    "ava": "^1.0.1",
+    "babel-register": "^6.26.0",
+    "coveralls": "^3.0.2",
+    "npm-run-all": "^4.1.3",
+    "nyc": "^13.0.1",
+    "prettier": "^1.14.3",
+    "rimraf": "^2.6.2",
+    "sinon": "^7.2.3",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "typescript": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "ava": {
+    "require": [
+      "babel-register"
+    ]
+  }
+}
