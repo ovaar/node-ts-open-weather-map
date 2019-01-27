@@ -2,33 +2,55 @@
 [![Build Status](https://travis-ci.org/ninox92/node-ts-OpenWeatherMap.svg?branch=master)](https://travis-ci.org/ninox92/node-ts-OpenWeatherMap)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-# Using this module in other modules
+> Simplified OpenWeatherMap API client
 
-Here is a quick example of how this module can be used in other modules. The [TypeScript Module Resolution Logic](https://www.typescriptlang.org/docs/handbook/module-resolution.html) makes it quite easy. The file `src/index.ts` is a [barrel](https://basarat.gitbooks.io/typescript/content/docs/tips/barrel.html) that re-exports selected exports from other files. The _package.json_ file contains `main` attribute that points to the generated `lib/index.js` file and `typings` attribute that points to the generated `lib/index.d.ts` file.
+<p align="center">
+  <a href="#key-features">Key Features</a> •
+  <a href="#example">Example</a> •
+  <a href="#credits">Credits</a> •
+  <a href="#license">License</a> •
+  <a href="#donations">Donations</a>
+</p>
 
-> If you are planning to have code in multiple files (which is quite natural for a NodeJS module) that users can import, make sure you update `src/index.ts` file appropriately.
 
-Now assuming you have published this amazing module to _npm_ with the name `my-amazing-lib`, and installed it in the module in which you need it -
+## Example
 
-- To use the `Greeter` class in a TypeScript file -
+```javascript
+try {
+  const { OpenWeatherMapApi } = require('node-ts-open-weather-map')
+  const openWeatherMapApi = new OpenWeatherMapApi({
+    key: process.env.OpenWeatherMapApiKey
+  })
 
-```ts
-import { Greeter } from "my-amazing-lib";
+  const data = await openWeatherMapApi.byCityName({
+    name: 'London',
+    countyCode: 'gb'
+  })
 
-const greeter = new Greeter("World!");
-greeter.greet();
+  console.log(data)
+} catch (error) {
+  console.log(error)
+}
 ```
 
-- To use the `Greeter` class in a JavaScript file -
+## Installation
 
-```js
-const Greeter = require('my-amazing-lib').Greeter;
-
-const greeter = new Greeter('World!');
-greeter.greet();
+```
+$ npm i -s https://github.com/ninox92/node-ts-OpenWeatherMap
 ```
 
-## Setting travis and coveralls badges
-1. Sign in to [travis](https://travis-ci.org/) and activate the build for your project.
-2. Sign in to [coveralls](https://coveralls.io/) and activate the build for your project.
-3. Replace {{github-user-name}}/{{github-app-name}} with your repo details like: "ospatil/generator-node-typescript".
+## Credits
+
+This software uses the following open source packages:
+
+- [Axios](https://github.com/axios/axios)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/)
+
+## License
+
+MIT
+
+## Donations
+
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/btVGTv4zM)
