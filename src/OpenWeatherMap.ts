@@ -3,6 +3,11 @@
 import axios from "axios";
 import { URL, URLSearchParams } from "url";
 
+enum OpenWeatherMapApiDataType {
+  Weather = "weather",
+  Forecast = "forecast"
+}
+
 export enum OpenWeatherMapApiUnits {
   Fahrenheit = "imperial",
   Celsius = "metric"
@@ -49,7 +54,10 @@ export class OpenWeatherMapApi {
         units: this.options.temperatureUnit
       });
 
-      const url = this.getBaseUrl() + "&" + params.toString();
+      const url =
+        this.getBaseUrl(OpenWeatherMapApiDataType.Weather) +
+        "&" +
+        params.toString();
       const { data } = await axios.get(url);
 
       return data;
@@ -58,13 +66,32 @@ export class OpenWeatherMapApi {
     }
   }
 
-  private getBaseUrl(): URL {
+  public async forecastByCityName(queryOpts: IByCityNameOptions): Promise<any> {
+    try {
+      const params = new URLSearchParams({
+        q: [queryOpts.name, queryOpts.countryCode].join(),
+        units: this.options.temperatureUnit
+      });
+
+      const url =
+        this.getBaseUrl(OpenWeatherMapApiDataType.Forecast) +
+        "&" +
+        params.toString();
+      const { data } = await axios.get(url);
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  private getBaseUrl(type: OpenWeatherMapApiDataType): URL {
     const params = new URLSearchParams({
       APPID: this.options.key as string
     });
 
     return new URL(
-      `data/${this.options.apiVersion}/weather?${params.toString()}`,
+      `data/${this.options.apiVersion}/${type}?${params.toString()}`,
       BASE_URL
     );
   }

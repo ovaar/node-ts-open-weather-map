@@ -1,7 +1,8 @@
 import ava, { TestInterface } from "ava";
 import axios, { AxiosResponse } from "axios";
 import * as sinon from "sinon";
-import * as sampleData from "./sample-london.json";
+import * as sampleWeatherData from "./sample-london-weather.json";
+import * as sampleForecastData from "./sample-london-forecast.json";
 
 import {
   OpenWeatherMapApiUnits,
@@ -68,7 +69,7 @@ test.serial("Should get the weather byCityName successfully", async t => {
 
   const response: AxiosResponse = {
     config: {},
-    data: sampleData,
+    data: sampleWeatherData,
     status: 200,
     statusText: "success",
     headers: {}
@@ -90,7 +91,7 @@ test.serial("Should get the weather byCityName successfully", async t => {
 
   sinon.assert.called(stub);
   const call = stub.getCall(0);
-  t.is(data, sampleData);
+  t.is(data, sampleWeatherData);
   t.is(call.args[0], expectedUrl);
 });
 
@@ -99,14 +100,61 @@ test.serial("Should throw an error byCityName fails", async t => {
 
   const options: IOpenWeatherMapApiOptions = {
     key: "xxx-xxx-xxx",
-    apiVersion: "1.1",
-    temperatureUnit: OpenWeatherMapApiUnits.Fahrenheit
   };
 
   const api = new OpenWeatherMapApi(options);
 
   await t.throwsAsync(
     api.byCityName({
+      countryCode: "nl",
+      name: "Eindhoven"
+    } as IByCityNameOptions),
+    { message: "http error" }
+  );
+});
+
+test.serial("Should get the forecastByCityName successfully", async t => {
+  const expectedUrl =
+    "https://api.openweathermap.org/data/2.5/forecast?APPID=xxx-xxx-xxx&q=Eindhoven%2Cnl&units=metric";
+
+  const response: AxiosResponse = {
+    config: {},
+    data: sampleForecastData,
+    status: 200,
+    statusText: "success",
+    headers: {}
+  };
+  const stub = t.context.sandbox.stub(axios, "get").resolves(response);
+
+  const options: IOpenWeatherMapApiOptions = {
+    key: "xxx-xxx-xxx"
+  };
+
+  const api = new OpenWeatherMapApi(options);
+
+  const data = await api.forecastByCityName({
+    countryCode: "nl",
+    name: "Eindhoven"
+  } as IByCityNameOptions);
+
+  sinon.assert.called(stub);
+  const call = stub.getCall(0);
+  t.is(data, sampleForecastData);
+  t.is(call.args[0], expectedUrl);
+});
+
+
+test.serial("Should throw an error forecastByCityName fails", async t => {
+  t.context.sandbox.stub(axios, "get").rejects(new Error("http error"));
+
+  const options: IOpenWeatherMapApiOptions = {
+    key: "xxx-xxx-xxx",
+  };
+
+  const api = new OpenWeatherMapApi(options);
+
+  await t.throwsAsync(
+    api.forecastByCityName({
       countryCode: "nl",
       name: "Eindhoven"
     } as IByCityNameOptions),
