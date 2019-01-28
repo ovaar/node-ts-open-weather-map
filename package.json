@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "description": "Node.js typescript OpenWeatherMap api wrapper",
   "license": "MIT",
-  "repository": "",
-  "author": "",
+  "repository": "https://github.com/ninox92/node-ts-open-weather-map",
+  "author": "Thomas Reynders",
   "keywords": [
-    ""
+    "typescript",
+    "nodejs",
+    "openweathermap",
+    "api"
   ],
   "files": [
     "lib"
