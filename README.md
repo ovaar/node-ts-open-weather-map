@@ -1,5 +1,5 @@
-[![Coverage Status](https://coveralls.io/repos/github/ninox92/node-ts-OpenWeatherMap/badge.svg?branch=master)](https://coveralls.io/github/ninox92/node-ts-OpenWeatherMap?branch=master)
-[![Build Status](https://travis-ci.org/ninox92/node-ts-OpenWeatherMap.svg?branch=master)](https://travis-ci.org/ninox92/node-ts-OpenWeatherMap)
+[![Coverage Status](https://coveralls.io/repos/github/ninox92/node-ts-open-weather-map/badge.svg?branch=master)](https://coveralls.io/github/ninox92/node-ts-open-weather-map?branch=master)
+[![Build Status](https://travis-ci.org/ninox92/node-ts-open-weather-map.svg?branch=master)](https://travis-ci.org/ninox92/node-ts-open-weather-map)
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
 > Simplified OpenWeatherMap API client
