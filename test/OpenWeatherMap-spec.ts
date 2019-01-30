@@ -99,7 +99,7 @@ test.serial("Should throw an error byCityName fails", async t => {
   t.context.sandbox.stub(axios, "get").rejects(new Error("http error"));
 
   const options: IOpenWeatherMapApiOptions = {
-    key: "xxx-xxx-xxx",
+    key: "xxx-xxx-xxx"
   };
 
   const api = new OpenWeatherMapApi(options);
@@ -143,12 +143,11 @@ test.serial("Should get the forecastByCityName successfully", async t => {
   t.is(call.args[0], expectedUrl);
 });
 
-
 test.serial("Should throw an error forecastByCityName fails", async t => {
   t.context.sandbox.stub(axios, "get").rejects(new Error("http error"));
 
   const options: IOpenWeatherMapApiOptions = {
-    key: "xxx-xxx-xxx",
+    key: "xxx-xxx-xxx"
   };
 
   const api = new OpenWeatherMapApi(options);
