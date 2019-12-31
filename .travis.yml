@@ -1,8 +1,34 @@
 language: node_js
+cache:
+  directories:
+    - ~/.npm
+
+notifications:
+  email: false
+
 node_js:
-  - 'node' # use latest stable nodejs version
-script:
-  - npm test  # test build to build and run ava tests
-  - npm run coverage  # generate nyc report
-after_script:
-  - 'cat coverage/lcov.info | ./node_modules/.bin/coveralls' # sends the coverage report to coveralls
+  - 'node'
+  - '10'
+  - '11'
+  - '8'
+
+script: echo "Running tests against $(node -v) ..."
+
+jobs:
+  include:
+    - stage: test
+      script: npm run test:prod
+    - stage: coverage
+      node_js: node
+      script: npm run test:coverage && npm run report-coverage && rm -rf ./coverage
+    - stage: release
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script: npm run build && npx semantic-release
+        on:
+          branch: master
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
