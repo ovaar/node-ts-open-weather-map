@@ -1,60 +1,85 @@
 {
   "name": "node-ts-open-weather-map",
-  "version": "0.1.0",
+  "version": "0.0.0-semantic-release",
   "description": "Node.js typescript OpenWeatherMap api wrapper",
   "license": "MIT",
-  "repository": "https://github.com/ninox92/node-ts-open-weather-map",
-  "author": "Thomas Reynders",
+  "repository": "https://github.com/ovaar/node-ts-open-weather-map",
+  "author": {
+    "name": "Thomas Reynders",
+    "url": "https://github.com/ovaar"
+  },
+  "main": "dist/lib/",
+  "types": "dist/types/",
+  "scripts": {
+    "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "test": "jest",
+    "test:prod": "npm run lint && npm run test -- --no-cache",
+    "test:coverage": "jest --coverage",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls",
+    "travis-deploy-once": "travis-deploy-once"
+  },
   "keywords": [
     "typescript",
     "nodejs",
     "openweathermap",
     "api"
   ],
-  "files": [
-    "lib"
-  ],
-  "main": "lib/index",
-  "types": "lib/index",
-  "scripts": {
-    "clean": "rimraf lib && rimraf coverage && rimraf .nyc_output && rimraf lib_test",
-    "format": "prettier --write \"{src,test}/**/*.ts\"",
-    "lint": "tslint --force --format verbose \"src/**/*.ts\"",
-    "prepublishOnly": "npm run build",
-    "prebuild": "npm run clean && npm run format && npm run lint && echo Using TypeScript && tsc --version",
-    "build": "tsc --pretty && tsc -p tsconfig.test.json --pretty",
-    "test": "npm run clean && tsc -p tsconfig.test.json --pretty && nyc --exclude \"**/*-spec.js\" ava \"**/*-spec.js\" --verbose",
-    "coverage": "nyc report --reporter=lcov --reporter=text --reporter=html",
-    "watch": "npm run build -- --watch",
-    "watch:test:ts": "tsc -p tsconfig.test.json --pretty --watch",
-    "watch:test:ava": "ava \"**/*-spec.js\" --verbose --watch",
-    "watch:test": "run-p watch:test:ts watch:test:ava"
-  },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "0.18.1"
   },
   "devDependencies": {
-    "@types/node": "^10.11.4",
-    "@types/sinon": "^7.0.5",
-    "ava": "^1.0.1",
-    "babel-register": "^6.26.0",
-    "coveralls": "^3.0.2",
-    "npm-run-all": "^4.1.3",
-    "nyc": "^13.0.1",
-    "prettier": "^1.14.3",
-    "rimraf": "^2.6.2",
-    "sinon": "^7.2.3",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0",
-    "typescript": "^3.1.1"
+    "@semantic-release/changelog": "3.0.6",
+    "@semantic-release/commit-analyzer": "6.3.3",
+    "@semantic-release/git": "7.0.18",
+    "@semantic-release/npm": "5.3.5",
+    "@semantic-release/release-notes-generator": "7.3.5",
+    "@types/jest": "24.0.25",
+    "@types/node": "12.12.6",
+    "@types/sinon": "7.5.1",
+    "coveralls": "3.0.9",
+    "jest": "24.9.0",
+    "jest-cli": "24.9.0",
+    "prettier": "1.19.1",
+    "rimraf": "2.7.1",
+    "semantic-release": "15.14.0",
+    "sinon": "7.5.0",
+    "ts-jest": "24.2.0",
+    "tslint": "5.20.1",
+    "tslint-config-prettier": "1.18.0",
+    "tslint-config-standard": "9.0.0",
+    "typescript": "3.7.4"
   },
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "ava": {
-    "require": [
-      "babel-register"
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
+    },
+    "collectCoverageFrom": [
+      "src/*.{js,ts}"
     ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
