@@ -1,32 +1,20 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "module": "commonjs",
     "moduleResolution": "node",
-    "lib": [
-      "esnext"
-    ],
-    "target": "es2015",
-    "outDir": "./lib",
-    "removeComments": true,
-    "inlineSourceMap": true,
-    "inlineSources": true,
-    "preserveConstEnums": true,
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": ["es2015", "es2016", "es2017", "dom"],
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "declarationDir": "dist/types",
+    "outDir": "dist/lib",
+    "typeRoots": ["node_modules/@types"]
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*-spec.ts",
-    "test"
-  ]
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts", "__tests__"]
 }
