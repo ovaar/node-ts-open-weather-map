@@ -1,6 +1,8 @@
-[![Coverage Status](https://coveralls.io/repos/github/ovaar/node-ts-open-weather-map/badge.svg?branch=master)](https://coveralls.io/github/ovaar/node-ts-open-weather-map?branch=master)
 [![Build Status](https://travis-ci.org/ovaar/node-ts-open-weather-map.svg?branch=master)](https://travis-ci.org/ovaar/node-ts-open-weather-map)
-[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![Coverage Status](https://coveralls.io/repos/github/ovaar/node-ts-open-weather-map/badge.svg?branch=master)](https://coveralls.io/github/ovaar/node-ts-open-weather-map?branch=master)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![npm version](https://img.shields.io/npm/v/node-ts-open-weather-map)](https://www.npmjs.com/package/node-ts-open-weather-map 'View this project on npm')
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg)](https://paypal.me/ThomasReynders)
 
 > Simplified OpenWeatherMap API client
 
@@ -35,7 +37,7 @@ try {
 ## Installation
 
 ```
-$ npm i -s https://github.com/ninox92/node-ts-open-weather-map
+$ npm i node-ts-open-weather-map
 ```
 
 ## Credits
