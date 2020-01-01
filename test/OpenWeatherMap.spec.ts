@@ -8,7 +8,6 @@ import * as sampleForecastData from './sample-london-forecast.json'
 import * as sampleWeatherData from './sample-london-weather.json'
 
 import {
-  IByCityNameOptions,
   IOpenWeatherMapApiOptions,
   OpenWeatherMapApi,
   OpenWeatherMapApiUnits
@@ -87,7 +86,7 @@ describe('Testing OpenWeatherMap', () => {
     const data = await api.byCityName({
       countryCode: 'nl',
       name: 'Eindhoven'
-    } as IByCityNameOptions)
+    })
 
     sinon.assert.called(stub)
     const call = stub.getCall(0)
@@ -108,7 +107,7 @@ describe('Testing OpenWeatherMap', () => {
       api.byCityName({
         countryCode: 'nl',
         name: 'Eindhoven'
-      } as IByCityNameOptions)
+      })
     ).rejects.toThrow('http error')
   })
 
@@ -134,7 +133,7 @@ describe('Testing OpenWeatherMap', () => {
     const data = await api.forecastByCityName({
       countryCode: 'nl',
       name: 'Eindhoven'
-    } as IByCityNameOptions)
+    })
 
     sinon.assert.called(stub)
     const call = stub.getCall(0)
@@ -156,7 +155,7 @@ describe('Testing OpenWeatherMap', () => {
       api.forecastByCityName({
         countryCode: 'nl',
         name: 'Eindhoven'
-      } as IByCityNameOptions)
+      })
     ).rejects.toThrow('http error')
   })
 })
