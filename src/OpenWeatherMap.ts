@@ -19,7 +19,7 @@ export interface IOpenWeatherMapApiOptions {
   temperatureUnit?: OpenWeatherMapApiUnits
 }
 
-export type ByCityNameOptions = {
+export interface IByCityNameOptions {
   name: string
   countryCode?: string
 }
@@ -47,7 +47,7 @@ export class OpenWeatherMapApi {
     this.options.temperatureUnit = this.options.temperatureUnit || DEFAULT_UNIT
   }
 
-  public async byCityName(queryOpts: ByCityNameOptions): Promise<any> {
+  public async byCityName(queryOpts: IByCityNameOptions): Promise<any> {
     try {
       const params = new URLSearchParams({
         q: [queryOpts.name, queryOpts.countryCode].join(),
@@ -66,7 +66,7 @@ export class OpenWeatherMapApi {
     }
   }
 
-  public async forecastByCityName(queryOpts: ByCityNameOptions): Promise<any> {
+  public async forecastByCityName(queryOpts: IByCityNameOptions): Promise<any> {
     try {
       const params = new URLSearchParams({
         q: [queryOpts.name, queryOpts.countryCode].join(),
