@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = require("axios");
 const url_1 = require("url");
@@ -12,17 +12,17 @@ var OpenWeatherMapApiUnits;
     OpenWeatherMapApiUnits["Fahrenheit"] = "imperial";
     OpenWeatherMapApiUnits["Celsius"] = "metric";
 })(OpenWeatherMapApiUnits = exports.OpenWeatherMapApiUnits || (exports.OpenWeatherMapApiUnits = {}));
-const BASE_URL = "https://api.openweathermap.org/";
-const DEFAULT_API_VERSION = "2.5";
+const BASE_URL = 'https://api.openweathermap.org/';
+const DEFAULT_API_VERSION = '2.5';
 const DEFAULT_UNIT = OpenWeatherMapApiUnits.Celsius;
 class OpenWeatherMapApi {
     constructor(options = {
         apiVersion: DEFAULT_API_VERSION,
-        key: "",
+        key: '',
         temperatureUnit: DEFAULT_UNIT
     }) {
         if (!options.key.length) {
-            throw new Error("Invalid option key!");
+            throw new Error('Invalid option key!');
         }
         this.options = options;
         this.options.apiVersion = this.options.apiVersion || DEFAULT_API_VERSION;
@@ -35,7 +35,7 @@ class OpenWeatherMapApi {
                 units: this.options.temperatureUnit
             });
             const url = this.getBaseUrl(OpenWeatherMapApiDataType.Weather) +
-                "&" +
+                '&' +
                 params.toString();
             const { data } = await axios_1.default.get(url);
             return data;
@@ -51,7 +51,7 @@ class OpenWeatherMapApi {
                 units: this.options.temperatureUnit
             });
             const url = this.getBaseUrl(OpenWeatherMapApiDataType.Forecast) +
-                "&" +
+                '&' +
                 params.toString();
             const { data } = await axios_1.default.get(url);
             return data;
