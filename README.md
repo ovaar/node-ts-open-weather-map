@@ -25,7 +25,7 @@ try {
 
   const data = await openWeatherMapApi.byCityName({
     name: 'London',
-    countyCode: 'gb'
+    countryCode: 'gb'
   })
 
   console.log(data)
