@@ -5,7 +5,8 @@ import { URL, URLSearchParams } from 'url'
 
 enum OpenWeatherMapApiDataType {
   Weather = 'weather',
-  Forecast = 'forecast'
+  Forecast = 'forecast',
+  DailyForecast = 'forecast/daily'
 }
 
 export enum OpenWeatherMapApiUnits {
@@ -75,6 +76,25 @@ export class OpenWeatherMapApi {
 
       const url =
         this.getBaseUrl(OpenWeatherMapApiDataType.Forecast) +
+        '&' +
+        params.toString()
+      const { data } = await axios.get(url)
+
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
+  
+  public async dailyForecastByCityName(queryOpts: IByCityNameOptions): Promise<any> {
+    try {
+      const params = new URLSearchParams({
+        q: [queryOpts.name, queryOpts.countryCode].join(),
+        units: this.options.temperatureUnit
+      })
+
+      const url =
+        this.getBaseUrl(OpenWeatherMapApiDataType.DailyForecast) +
         '&' +
         params.toString()
       const { data } = await axios.get(url)
