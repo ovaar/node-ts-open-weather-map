@@ -4,8 +4,8 @@ declare let expect: jest.Expect
 
 import axios, { AxiosResponse } from 'axios'
 import * as sinon from 'sinon'
-import * as sampleForecastData from './sample-london-forecast.json'
 import * as sampleDailyForecastData from './sample-london-daily-forecast.json'
+import * as sampleForecastData from './sample-london-forecast.json'
 import * as sampleWeatherData from './sample-london-weather.json'
 
 import {
