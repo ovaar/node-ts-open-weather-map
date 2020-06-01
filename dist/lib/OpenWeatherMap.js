@@ -6,6 +6,7 @@ var OpenWeatherMapApiDataType;
 (function (OpenWeatherMapApiDataType) {
     OpenWeatherMapApiDataType["Weather"] = "weather";
     OpenWeatherMapApiDataType["Forecast"] = "forecast";
+    OpenWeatherMapApiDataType["DailyForecast"] = "forecast/daily";
 })(OpenWeatherMapApiDataType || (OpenWeatherMapApiDataType = {}));
 var OpenWeatherMapApiUnits;
 (function (OpenWeatherMapApiUnits) {
@@ -51,6 +52,22 @@ class OpenWeatherMapApi {
                 units: this.options.temperatureUnit
             });
             const url = this.getBaseUrl(OpenWeatherMapApiDataType.Forecast) +
+                '&' +
+                params.toString();
+            const { data } = await axios_1.default.get(url);
+            return data;
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+    async dailyForecastByCityName(queryOpts) {
+        try {
+            const params = new url_1.URLSearchParams({
+                q: [queryOpts.name, queryOpts.countryCode].join(),
+                units: this.options.temperatureUnit
+            });
+            const url = this.getBaseUrl(OpenWeatherMapApiDataType.DailyForecast) +
                 '&' +
                 params.toString();
             const { data } = await axios_1.default.get(url);
