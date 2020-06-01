@@ -159,7 +159,7 @@ describe('Testing OpenWeatherMap', () => {
       })
     ).rejects.toThrow('http error')
   })
-  
+
     it('Should get the dailyForecastByCityName successfully', async () => {
     const expectedUrl =
       'https://api.openweathermap.org/data/2.5/forecast/daily?APPID=xxx-xxx-xxx&q=Eindhoven%2Cnl&units=metric'
@@ -179,7 +179,7 @@ describe('Testing OpenWeatherMap', () => {
 
     const api = new OpenWeatherMapApi(options)
 
-    const data = await api.forecastByCityName({
+    const data = await api.dailyForecastByCityName({
       countryCode: 'nl',
       name: 'Eindhoven'
     })
