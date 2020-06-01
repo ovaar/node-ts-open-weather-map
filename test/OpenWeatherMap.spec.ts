@@ -4,6 +4,7 @@ declare let expect: jest.Expect
 
 import axios, { AxiosResponse } from 'axios'
 import * as sinon from 'sinon'
+import * as sampleDailyForecastData from './sample-london-daily-forecast.json'
 import * as sampleForecastData from './sample-london-forecast.json'
 import * as sampleWeatherData from './sample-london-weather.json'
 
@@ -153,6 +154,54 @@ describe('Testing OpenWeatherMap', () => {
 
     await expect(
       api.forecastByCityName({
+        countryCode: 'nl',
+        name: 'Eindhoven'
+      })
+    ).rejects.toThrow('http error')
+  })
+
+    it('Should get the dailyForecastByCityName successfully', async () => {
+    const expectedUrl =
+      'https://api.openweathermap.org/data/2.5/forecast/daily?APPID=xxx-xxx-xxx&q=Eindhoven%2Cnl&units=metric'
+
+    const response: AxiosResponse = {
+      config: {},
+      data: sampleDailyForecastData,
+      headers: {},
+      status: 200,
+      statusText: 'success'
+    }
+    const stub = sandbox.stub(axios, 'get').resolves(response)
+
+    const options: IOpenWeatherMapApiOptions = {
+      key: 'xxx-xxx-xxx'
+    }
+
+    const api = new OpenWeatherMapApi(options)
+
+    const data = await api.dailyForecastByCityName({
+      countryCode: 'nl',
+      name: 'Eindhoven'
+    })
+
+    sinon.assert.called(stub)
+    const call = stub.getCall(0)
+
+    expect(data).toBe(sampleDailyForecastData)
+    expect(call.args[0]).toBe(expectedUrl)
+  })
+
+  it('Should throw an error dailyForecastByCityName fails', async () => {
+    sandbox.stub(axios, 'get').rejects(new Error('http error'))
+
+    const options: IOpenWeatherMapApiOptions = {
+      key: 'xxx-xxx-xxx'
+    }
+
+    const api = new OpenWeatherMapApi(options)
+
+    await expect(
+      api.dailyForecastByCityName({
         countryCode: 'nl',
         name: 'Eindhoven'
       })

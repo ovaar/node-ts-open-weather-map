@@ -16,5 +16,6 @@ export declare class OpenWeatherMapApi {
     constructor(options?: IOpenWeatherMapApiOptions);
     byCityName(queryOpts: IByCityNameOptions): Promise<any>;
     forecastByCityName(queryOpts: IByCityNameOptions): Promise<any>;
+    dailyForecastByCityName(queryOpts: IByCityNameOptions): Promise<any>;
     private getBaseUrl;
 }
