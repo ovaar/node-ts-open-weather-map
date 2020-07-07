@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/ovaar/node-ts-open-weather-map/compare/v1.0.1...v1.1.0) (2020-07-07)
+
+
+### Features
+
+* **OpenWeatherMap:** Added Daily Forecast API Support ([#2](https://github.com/ovaar/node-ts-open-weather-map/issues/2)) ([dd9c769](https://github.com/ovaar/node-ts-open-weather-map/commit/dd9c76955926964f08854c45c303bb850d377ecd))
+
 ## [1.0.1](https://github.com/ovaar/node-ts-open-weather-map/compare/v1.0.0...v1.0.1) (2020-01-02)
 
 
