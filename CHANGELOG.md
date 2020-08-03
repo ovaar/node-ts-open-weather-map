@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/ovaar/node-ts-open-weather-map/compare/v1.1.0...v1.2.0) (2020-08-03)
+
+
+### Features
+
+* **OpenWeatherMap:** Add `*ByCityId` APIs ([#3](https://github.com/ovaar/node-ts-open-weather-map/issues/3)) ([e152da9](https://github.com/ovaar/node-ts-open-weather-map/commit/e152da9addb9cc2f115ae821289dbed8158fbeca))
+
 # [1.1.0](https://github.com/ovaar/node-ts-open-weather-map/compare/v1.0.1...v1.1.0) (2020-07-07)
 
 
