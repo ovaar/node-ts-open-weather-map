@@ -85,11 +85,68 @@ export class OpenWeatherMapApi {
       throw error
     }
   }
-  
+
   public async dailyForecastByCityName(queryOpts: IByCityNameOptions): Promise<any> {
     try {
       const params = new URLSearchParams({
         q: [queryOpts.name, queryOpts.countryCode].join(),
+        units: this.options.temperatureUnit
+      })
+
+      const url =
+        this.getBaseUrl(OpenWeatherMapApiDataType.DailyForecast) +
+        '&' +
+        params.toString()
+      const { data } = await axios.get(url)
+
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
+
+  public async byCityId(cityId: number | string): Promise<any> {
+    try {
+      const params = new URLSearchParams({
+        id: cityId.toString(),
+        units: this.options.temperatureUnit
+      })
+
+      const url =
+        this.getBaseUrl(OpenWeatherMapApiDataType.Weather) +
+        '&' +
+        params.toString()
+      const { data } = await axios.get(url)
+
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
+
+  public async forecastByCityId(cityId: number | string): Promise<any> {
+    try {
+      const params = new URLSearchParams({
+        id: cityId.toString(),
+        units: this.options.temperatureUnit
+      })
+
+      const url =
+        this.getBaseUrl(OpenWeatherMapApiDataType.Forecast) +
+        '&' +
+        params.toString()
+      const { data } = await axios.get(url)
+
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
+
+  public async dailyForecastByCityId(cityId: number | string): Promise<any> {
+    try {
+      const params = new URLSearchParams({
+        id: cityId.toString(),
         units: this.options.temperatureUnit
       })
 
