@@ -77,6 +77,54 @@ class OpenWeatherMapApi {
             throw error;
         }
     }
+    async byCityId(cityId) {
+        try {
+            const params = new url_1.URLSearchParams({
+                id: cityId.toString(),
+                units: this.options.temperatureUnit
+            });
+            const url = this.getBaseUrl(OpenWeatherMapApiDataType.Weather) +
+                '&' +
+                params.toString();
+            const { data } = await axios_1.default.get(url);
+            return data;
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+    async forecastByCityId(cityId) {
+        try {
+            const params = new url_1.URLSearchParams({
+                id: cityId.toString(),
+                units: this.options.temperatureUnit
+            });
+            const url = this.getBaseUrl(OpenWeatherMapApiDataType.Forecast) +
+                '&' +
+                params.toString();
+            const { data } = await axios_1.default.get(url);
+            return data;
+        }
+        catch (error) {
+            throw error;
+        }
+    }
+    async dailyForecastByCityId(cityId) {
+        try {
+            const params = new url_1.URLSearchParams({
+                id: cityId.toString(),
+                units: this.options.temperatureUnit
+            });
+            const url = this.getBaseUrl(OpenWeatherMapApiDataType.DailyForecast) +
+                '&' +
+                params.toString();
+            const { data } = await axios_1.default.get(url);
+            return data;
+        }
+        catch (error) {
+            throw error;
+        }
+    }
     getBaseUrl(type) {
         const params = new url_1.URLSearchParams({
             APPID: this.options.key
