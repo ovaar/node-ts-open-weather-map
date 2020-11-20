@@ -27,7 +27,7 @@
     "api"
   ],
   "dependencies": {
-    "axios": "0.18.1"
+    "axios": "0.21.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "3.0.6",
