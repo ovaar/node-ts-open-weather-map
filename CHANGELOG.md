@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/ovaar/node-ts-open-weather-map/compare/v1.2.0...v1.2.1) (2020-11-20)
+
+
+### Bug Fixes
+
+* upgrade axios from 0.18.1 to 0.21.0 ([#4](https://github.com/ovaar/node-ts-open-weather-map/issues/4)) ([1c7e718](https://github.com/ovaar/node-ts-open-weather-map/commit/1c7e7187c86143b2b348bedb81ca25c4d6f7e0a5))
+
 # [1.2.0](https://github.com/ovaar/node-ts-open-weather-map/compare/v1.1.0...v1.2.0) (2020-08-03)
 
 
