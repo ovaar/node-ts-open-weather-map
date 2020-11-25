@@ -1,6 +1,6 @@
 {
   "name": "node-ts-open-weather-map",
-  "version": "1.2.1",
+  "version": "1.1.0",
   "description": "Node.js typescript OpenWeatherMap api wrapper",
   "license": "MIT",
   "repository": "https://github.com/ovaar/node-ts-open-weather-map",

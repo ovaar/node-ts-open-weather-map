@@ -1,5 +1,6 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.OpenWeatherMapApi = exports.OpenWeatherMapApiUnits = void 0;
 const axios_1 = require("axios");
 const url_1 = require("url");
 var OpenWeatherMapApiDataType;
