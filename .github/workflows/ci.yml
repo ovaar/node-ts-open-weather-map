@@ -32,8 +32,12 @@ jobs:
         run: npm ci
       - name: Test
         run: npm run test:prod
+        run: npm run test:coverage
       - name: Coveralls
-        run: npm run test:coverage && npm run report-coverage && rm -rf ./coverage
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Coveralls
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
