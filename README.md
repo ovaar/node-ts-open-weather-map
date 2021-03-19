@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/ovaar/node-ts-open-weather-map/workflows/{workflowName}/badge.svg)](https://github.com/ovaar/node-ts-open-weather-map/actions)
+[![Build Status](https://github.com/ovaar/node-ts-open-weather-map/workflows/ci/badge.svg)](https://github.com/ovaar/node-ts-open-weather-map/actions)
 [![Coverage Status](https://coveralls.io/repos/github/ovaar/node-ts-open-weather-map/badge.svg?branch=master)](https://coveralls.io/github/ovaar/node-ts-open-weather-map?branch=master)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![npm version](https://img.shields.io/npm/v/node-ts-open-weather-map)](https://www.npmjs.com/package/node-ts-open-weather-map 'View this project on npm')
