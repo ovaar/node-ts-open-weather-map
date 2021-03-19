@@ -18,7 +18,6 @@
     "test:prod": "npm run lint && npm run test -- --no-cache",
     "test:coverage": "jest --coverage",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "travis-deploy-once": "travis-deploy-once"
   },
   "keywords": [
     "typescript",
