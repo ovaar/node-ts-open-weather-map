@@ -124,6 +124,26 @@ export class OpenWeatherMapApi {
     }
   }
 
+  public async byGeographicCoordinates(latitude: number, longitude: number): Promise<any> {
+    try {
+      const params = new URLSearchParams({
+        lat: latitude.toString(),
+        lon: longitude.toString(),
+        units: this.options.temperatureUnit
+      })
+
+      const url =
+        this.getBaseUrl(OpenWeatherMapApiDataType.Weather) +
+        '&' +
+        params.toString()
+      const { data } = await axios.get(url)
+
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
+
   public async forecastByCityId(cityId: number | string): Promise<any> {
     try {
       const params = new URLSearchParams({
