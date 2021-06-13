@@ -94,6 +94,23 @@ class OpenWeatherMapApi {
             throw error;
         }
     }
+    async byGeographicCoordinates(latitude, longitude) {
+        try {
+            const params = new url_1.URLSearchParams({
+                lat: latitude.toString(),
+                lon: longitude.toString(),
+                units: this.options.temperatureUnit
+            });
+            const url = this.getBaseUrl(OpenWeatherMapApiDataType.Weather) +
+                '&' +
+                params.toString();
+            const { data } = await axios_1.default.get(url);
+            return data;
+        }
+        catch (error) {
+            throw error;
+        }
+    }
     async forecastByCityId(cityId) {
         try {
             const params = new url_1.URLSearchParams({
