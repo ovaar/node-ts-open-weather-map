@@ -1,3 +1,17 @@
+# [1.1.0](https://github.com/ovaar/node-ts-open-weather-map/compare/v1.0.1...v1.1.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* package.json to reduce vulnerabilities ([#6](https://github.com/ovaar/node-ts-open-weather-map/issues/6)) ([5948100](https://github.com/ovaar/node-ts-open-weather-map/commit/5948100e77cf44f52927cd81988d97db3b5823ee))
+* upgrade axios from 0.18.1 to 0.21.0 ([#4](https://github.com/ovaar/node-ts-open-weather-map/issues/4)) ([1ec446c](https://github.com/ovaar/node-ts-open-weather-map/commit/1ec446c3c4ecc5bee93d09743e8bf34f3bd220ca))
+
+
+### Features
+
+* **OpenWeatherMap:** Add `*ByCityId` APIs ([#3](https://github.com/ovaar/node-ts-open-weather-map/issues/3)) ([a0be8be](https://github.com/ovaar/node-ts-open-weather-map/commit/a0be8be72090a259a93f5eb0f710090c9c0ec05c))
+* **OpenWeatherMap:** Added Daily Forecast API Support ([#2](https://github.com/ovaar/node-ts-open-weather-map/issues/2)) ([e66b5c4](https://github.com/ovaar/node-ts-open-weather-map/commit/e66b5c4dbdaf854b7abb52df07d6766d70e00898))
+
 # [1.1.0](https://github.com/ovaar/node-ts-open-weather-map/compare/v1.0.1...v1.1.0) (2021-06-10)
 
 
