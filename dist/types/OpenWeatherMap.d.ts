@@ -18,6 +18,7 @@ export declare class OpenWeatherMapApi {
     forecastByCityName(queryOpts: IByCityNameOptions): Promise<any>;
     dailyForecastByCityName(queryOpts: IByCityNameOptions): Promise<any>;
     byCityId(cityId: number | string): Promise<any>;
+    byGeographicCoordinates(latitude: number, longitude: number): Promise<any>;
     forecastByCityId(cityId: number | string): Promise<any>;
     dailyForecastByCityId(cityId: number | string): Promise<any>;
     private getBaseUrl;
